@@ -1,0 +1,155 @@
+
+<img class="wave" src="assets/images/wave.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/images/undraw_contract_uy56.svg">
+    </div>
+    <div class="login-content">
+
+<form 
+  *ngIf="!isSuccessful"
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+    <img src="assets/images/undraw_profile_pic_ic5t.svg" >
+            <h2 class="title">Inscription</h2>
+            
+            <div class="row p-2">
+                <div class="col mr-4">
+                    <div class="input-div one">
+                        <div class="i">
+                                <i class="fas fa-user"></i>
+                        </div>
+                        <div class="div">
+                                
+                                <input 
+                                type="text"
+                                class="form-control"
+                                name="nom"
+                                [(ngModel)]="form.nom"
+                                required
+                                minlength="3"
+                                maxlength="20"
+                                #username="ngModel"
+                                placeholder="Nom">
+                        </div>
+                      </div>
+                </div>
+                <div class="col ml-4">
+                    <div class="input-div one">
+                        <div class="i">
+                                <i class="fas fa-user"></i>
+                        </div>
+                        <div class="div">
+                                
+                                <input 
+                                type="text"
+                                class="form-control"
+                                name="prenom"
+                                [(ngModel)]="form.prenom"
+                                required
+                                minlength="3"
+                                maxlength="20"
+                                #username="ngModel"
+                                placeholder="Prénom">
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+            <div class="input-div one">
+              <div class="i">
+                      <i class="fas fa-user"></i>
+              </div>
+              <div class="div">
+                      
+                      <input 
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      [(ngModel)]="form.username"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel"
+                      placeholder="username">
+              </div>
+            </div>
+              <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors?.required">Username is required</div>
+                <div *ngIf="username.errors?.minlength">
+                  Username must be at least 3 characters
+                </div>
+                <div *ngIf="username.errors?.maxlength">
+                  Username must be at most 20 characters
+                </div>
+              </div>
+           
+
+               <div class="input-div one">
+                  <div class="i">
+                          <i class="fas fa-user"></i>
+                  </div>
+                  <div class="div">
+                          
+                          <input 
+                          type="email"
+                          class="form-control"
+                          name="email"
+                          [(ngModel)]="form.email"
+                          required
+                          email
+                          #email="ngModel"
+                          placeholder="Email">
+                  </div>
+                </div>
+                  <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors?.required">Email is required</div>
+                    <div *ngIf="email.errors?.email">
+                      Email must be a valid email address
+                    </div>
+                  </div>
+
+               
+               <div class="input-div pass">
+                  <div class="i"> 
+                       <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="div">
+                       
+                       <input 
+                       type="password"
+                       class="form-control"
+                       name="password"
+                       [(ngModel)]="form.password"
+                       required
+                       minlength="6"
+                       #password="ngModel"
+                       placeholder="Mot de passe">
+                  </div>
+                </div>
+                  <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors?.required">Password is required</div>
+                    <div *ngIf="password.errors?.minlength">
+                      Password must be at least 6 characters
+                    </div>
+                  </div>
+            
+            <br>
+            <input type="submit" class="btn" value="register">
+            
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Signup failed!<br />{{ errorMessage }}
+            </div>
+
+            <div class="alert alert-success" *ngIf="f.submitted && !isSignUpFailed">
+              User registered successfully!
+            </div>
+</form>
+ </div>
+</div>
+
+
