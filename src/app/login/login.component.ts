@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../service/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 
@@ -15,25 +16,29 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService , private route: Router) { }
+  constructor(private authService: AuthService , private route: Router , private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
-    /*if (this.tokenStorage.getToken()) {
+    if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
-    }*/
+      
+    }
+    
   }
 
   onSubmit() {
     this.authService.login(this.form).subscribe(
       data => {
-        //this.tokenStorage.saveToken(data.accessToken);
-        //this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveToken(data.access_token);
+        this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        //this.roles = this.tokenStorage.getUser().roles;
+        
+        //localStorage.setItem('key',data.token);
         this.reloadPage();
+        //console.log(data)
+        console.log(this.authService.decodeToken(this.tokenStorage.getToken()))
       },
       err => {
         this.errorMessage = err.error.message;
@@ -45,4 +50,5 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
+  
 }

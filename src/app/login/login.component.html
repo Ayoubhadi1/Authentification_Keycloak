@@ -55,7 +55,7 @@
                         name="password"
                         [(ngModel)]="form.password"
                         required
-                        
+                         
                         #password="ngModel" 
                        placeholder="Mot de passe">
                   </div>
@@ -70,9 +70,9 @@
                     Password must be at least 6 characters
                   </div>
                </div>
+              <u> <a routerLink="login">Forgot Password?</a> </u>
             
-            <br>
-            <input type="submit" class="btn" value="Login">
+            <input type="submit" class="btn" value="Login"  >
 
             <div class="form-group">
               <div
@@ -86,7 +86,7 @@
 </form>
 
 <div class="alert alert-success" *ngIf="isLoggedIn">
-  Logged in as {{ roles }}.
+  connecté
 </div>
  </div>
 </div>

@@ -1,0 +1,10 @@
+<div class="container">
+    <h2 *ngIf="user">welcome {{name}}</h2>
+<h2 *ngIf="!user">Non authentifié</h2>
+<span *ngIf="user">
+    <p>les roles : </p>
+    <ul>
+        <li *ngFor="let role of roles">{{role}}</li>
+    </ul>
+</span>
+</div>
