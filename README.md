@@ -8,7 +8,7 @@
 #### Les outils :
 - Angular coté frontend ,
 - API keycloak
-#### Les outils :
+#### Les acteurs :
 - Administrateur
 - Utilisateur
 
